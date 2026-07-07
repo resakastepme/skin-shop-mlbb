@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin URL Hash
+    |--------------------------------------------------------------------------
+    |
+    | Secret string appended to the admin panel URL prefix (/admin-{hash}).
+    | Change ADMIN_URL_HASH in .env to rotate the admin URL without touching
+    | any code — all admin links are generated via named routes.
+    |
+    */
+
+    'admin_url_hash' => env('ADMIN_URL_HASH', 'secret'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

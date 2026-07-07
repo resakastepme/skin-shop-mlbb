@@ -5,7 +5,7 @@
 Proyek ini adalah website untuk menjual saldo Diamond (DM) Mobile Legends milik Admin dengan cara "Gift Skin".
 Tujuan utamanya adalah agar user bisa memesan skin, dan admin akan mengirimkan skin tersebut via in-game gift.
 
-**Tech Stack:** Laravel (Backend & Admin Panel), Blade + Bootstrap 5 (Frontend User & Admin). Website mendukung dua bahasa (English dan Indonesia), dengan English sebagai default.
+**Tech Stack:** Laravel 13 (Backend & Admin Panel), MySQL (database, sudah terkoneksi ke MySQL lokal — lihat `.env`), Blade + Bootstrap 5 (Frontend User & Admin). Website mendukung dua bahasa (English dan Indonesia), dengan English sebagai default.
 
 ## 2. Aturan Bisnis & Logika Utama
 
@@ -41,6 +41,13 @@ Tujuan utamanya adalah agar user bisa memesan skin, dan admin akan mengirimkan s
     * **Settings:** edit konfigurasi global termasuk penyesuaian manual `current_diamond_balance` (cth: setelah admin top-up DM).
 
 * **Format Order Code:** Berbasis tanggal + suffix acak agar unik dan mudah dilacak. Format: `ORD-YYYYMMDD-XXXX` (cth: `ORD-20260707-A3F9`), di mana `XXXX` adalah 4 karakter alfanumerik uppercase acak.
+
+* **Cek Status Order (Publik, Tanpa Login):**
+  * User bisa melacak ordernya sendiri menggunakan `order_code`.
+  * Rute pencarian: halaman/form input `order_code` (cth: `GET /track-order`) yang mencari order dan menampilkan hasilnya.
+  * Rute detail: `GET /order/{order_code}` menampilkan detail order — status (`pending`/`success`/`canceled`), nama skin, total DM & Rupiah, dan sisa waktu reservasi jika masih `pending`.
+  * Halaman detail ini juga dipakai sebagai halaman tujuan setelah checkout (sebelum/sesudah redirect WhatsApp), agar user langsung punya link untuk memantau ordernya.
+  * `order_code` cukup acak sehingga tidak mudah ditebak, tapi TETAP jangan tampilkan data sensitif lengkap di halaman publik (cth: masking sebagian email/nomor WhatsApp buyer).
 
 ## 3. Skema Database Utama
 
@@ -92,3 +99,5 @@ Saat saya meminta Anda (Claude) untuk menulis kode (Controller, Model, Migration
 2. **Database Transaction:** Gunakan `DB::transaction()` untuk setiap operasi yang melibatkan pembuatan Order dan pengubahan saldo DM di tabel `settings` (baik saat checkout, cancel, atau auto-cancel) agar data selalu konsisten.
 3. **Framework CSS:** Desain seluruh UI (Frontend maupun Admin Panel) menggunakan **Bootstrap 5**. Jangan gunakan Tailwind CSS.
 4. **Lokalisasi (Multi-language):** Implementasikan fitur multi-bahasa (English & Indonesia) dengan **English sebagai default**. Gunakan sistem lokalisasi bawaan Laravel (file lang `en` dan `id`, serta helper `__()` atau `@lang` di Blade) untuk SEMUA teks antarmuka pengguna (UI). Sediakan juga fitur/rute sederhana untuk mengubah *locale* menggunakan Session.
+5. **Rute Admin:** Semua rute Admin Panel WAJIB berada di bawah prefix dinamis dari `.env` (`ADMIN_URL_HASH`) yang dibaca lewat file config (cth: `config('app.admin_url_hash')`), dan dilindungi middleware `auth`. Jangan pernah hardcode prefix admin di routes atau view — gunakan named routes (`route('admin.orders.index')`) agar prefix bisa diganti tanpa mengubah kode.
+6. **Upload Gambar:** Gambar skin di-upload lewat form Admin Panel, disimpan ke disk `public` (`storage/app/public/skins`), dan divalidasi (tipe image, ukuran maksimal wajar, cth: 2MB). Saat skin dihapus atau gambarnya diganti, file lama ikut dihapus dari storage.
