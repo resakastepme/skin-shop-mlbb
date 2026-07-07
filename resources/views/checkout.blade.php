@@ -3,6 +3,7 @@
 @section('title', __('app.checkout').' — '.config('app.name'))
 
 @section('content')
+<div class="container page-mt py-5">
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('app.home') }}</a></li>
@@ -95,7 +96,7 @@
                             @error('friend_agreement')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4 rounded-pill">
                             <i class="bi bi-whatsapp me-1"></i>{{ __('app.submit_order') }}
                         </button>
                     </form>
@@ -103,4 +104,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

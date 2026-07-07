@@ -11,6 +11,7 @@
 @endphp
 
 @section('content')
+<div class="container page-mt py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             @if (session('order_created'))
@@ -91,9 +92,10 @@
                 </div>
             @endif
 
-            <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+            <a href="{{ route('home') }}" class="btn btn-outline-primary rounded-pill px-4">
                 <i class="bi bi-arrow-left me-1"></i>{{ __('app.back_to_home') }}
             </a>
         </div>
     </div>
+</div>
 @endsection

@@ -3,6 +3,7 @@
 @section('title', __('app.track_your_order').' — '.config('app.name'))
 
 @section('content')
+<div class="container page-mt py-5">
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <div class="card shadow-sm">
@@ -24,4 +25,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

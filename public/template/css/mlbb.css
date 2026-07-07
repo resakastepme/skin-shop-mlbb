@@ -1,0 +1,75 @@
+/*** MLBB overrides on top of the Fruitables template ***/
+
+/* Hero: MLBB Lightborn wallpaper under a navy overlay (keeps text readable) */
+.hero-header {
+    background: linear-gradient(100deg, rgba(11, 19, 48, 0.94) 0%, rgba(16, 26, 60, 0.82) 45%, rgba(16, 26, 60, 0.35) 100%),
+                url(../../img/hero-bg.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* No topbar in this build: tighten the fixed-navbar offset */
+@media (min-width: 992px) {
+    .hero-header,
+    .page-header {
+        margin-top: 97px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-header,
+    .page-header {
+        margin-top: 87px !important;
+    }
+}
+
+/* Inner pages (no hero): clear the fixed navbar */
+.page-mt {
+    margin-top: 97px;
+}
+
+@media (max-width: 992px) {
+    .page-mt {
+        margin-top: 87px;
+    }
+}
+
+/* Flash alerts float just under the fixed navbar */
+.alert-float {
+    position: fixed;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1029;
+    width: min(90vw, 700px);
+}
+
+/* Skin card images: uniform height */
+.fruite-img img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.fruite-img .placeholder-img {
+    height: 220px;
+    background: linear-gradient(135deg, #101A3C, #2547A8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Diamond price chip */
+.diamond-chip {
+    color: #2547A8;
+    font-weight: 700;
+}
+
+/* Type filter pills */
+.tab-class .nav-pills a.active {
+    background: var(--bs-primary) !important;
+}
+
+.tab-class .nav-pills a.active span {
+    color: var(--bs-white) !important;
+}

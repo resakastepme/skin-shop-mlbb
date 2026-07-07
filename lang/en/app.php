@@ -11,14 +11,39 @@ return [
     'back_to_home' => 'Back to Home',
 
     // Home / catalog
+    'hero_tagline' => '100% Safe MLBB Skin Gifting',
     'hero_title' => 'MLBB Skin Gift Shop',
     'hero_subtitle' => 'Order your favorite Mobile Legends skin and receive it as an in-game gift from our admin.',
+    'hero_cta_catalog' => 'Browse Skins',
+    'hero_cta_track' => 'Track Order',
+    'admin_diamond_balance' => 'Admin Diamond Balance',
+    'admin_account' => 'Admin Account',
+    'gift_requirement_note' => 'Make sure you have been friends with the admin account for at least 7 days to receive gifts.',
     'available_skins' => 'Available Skins',
     'no_skins' => 'No skins are available right now. Please check back later.',
     'order_now' => 'Order Now',
     'diamonds' => 'Diamonds',
     'hero' => 'Hero',
     'type' => 'Type',
+    'all_types' => 'All Types',
+
+    // Trust features
+    'feature_secure_title' => 'Secure Payment',
+    'feature_secure_desc' => 'Pay via DANA, confirmed directly with the admin on WhatsApp.',
+    'feature_reserve_title' => 'Guaranteed Stock',
+    'feature_reserve_desc' => 'Diamonds are reserved for you the moment you check out — no overselling.',
+    'feature_refund_title' => 'Auto Refund',
+    'feature_refund_desc' => 'Unpaid orders are canceled automatically after 30 minutes.',
+    'feature_fast_title' => 'Fast In-Game Gift',
+    'feature_fast_desc' => 'Your skin is sent as an in-game gift right after payment is verified.',
+
+    // Trust banner
+    'banner_title' => 'Shop With Confidence',
+    'banner_subtitle' => 'Real diamonds, real gifts, zero worries.',
+    'banner_point_1' => 'The diamond stock you see is real — the catalog only shows skins the admin can actually gift right now.',
+    'banner_point_2' => 'Your order is locked in for 30 minutes, and every transaction is tracked with a unique order code.',
+    'banner_point_3' => 'The admin account is fully transparent — you know exactly who is sending your gift.',
+    'banner_cta' => 'Order Your Skin Now',
 
     // Checkout
     'checkout' => 'Checkout',
@@ -133,4 +158,8 @@ return [
     'current_diamond_balance' => 'Current Diamond Balance',
     'settings_updated' => 'Settings have been updated.',
     'balance_note' => 'Adjust this manually only after topping up diamonds. Checkout, cancel, and refund update it automatically.',
+
+    // Footer
+    'all_rights_reserved' => 'All rights reserved.',
+    'footer_tagline' => 'MLBB skin gifting service — pay via DANA, receive in-game.',
 ];

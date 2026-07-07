@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Storage;
 
 class Skin extends Model
 {
@@ -48,6 +47,8 @@ class Skin extends Model
 
     public function imageUrl(): ?string
     {
-        return $this->image_url ? Storage::disk('public')->url($this->image_url) : null;
+        // asset() follows the current request's host/port, unlike Storage::url()
+        // which hardcodes APP_URL.
+        return $this->image_url ? asset('storage/'.$this->image_url) : null;
     }
 }

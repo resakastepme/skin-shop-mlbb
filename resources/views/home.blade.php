@@ -3,50 +3,176 @@
 @section('title', __('app.hero_title').' — '.config('app.name'))
 
 @section('content')
-    <div class="p-4 p-md-5 mb-4 rounded-3 text-white" style="background: linear-gradient(135deg, #1a1a2e, #6f42c1);">
-        <div class="col-lg-8">
-            <h1 class="display-6 fw-bold">{{ __('app.hero_title') }}</h1>
-            <p class="lead mb-0">{{ __('app.hero_subtitle') }}</p>
+    <!-- Hero Start -->
+    <div class="container-fluid py-5 mb-5 hero-header">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-md-12 col-lg-8">
+                    <h4 class="mb-3 text-secondary">{{ __('app.hero_tagline') }}</h4>
+                    <h1 class="mb-4 display-3 text-white">{{ __('app.hero_title') }}</h1>
+                    <p class="text-white-50 mb-4">{{ __('app.hero_subtitle') }}</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#catalog" class="btn btn-secondary rounded-pill py-3 px-5">
+                            <i class="fas fa-gem me-2"></i>{{ __('app.hero_cta_catalog') }}
+                        </a>
+                        <a href="{{ route('orders.track') }}" class="btn btn-outline-light rounded-pill py-3 px-5">
+                            {{ __('app.hero_cta_track') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Hero End -->
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="h4 mb-0">{{ __('app.available_skins') }}</h2>
+    <!-- Trust Features Start -->
+    <div class="container-fluid featurs py-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="featurs-item text-center rounded bg-light p-4 h-100">
+                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                            <i class="fas fa-shield-alt fa-3x text-white"></i>
+                        </div>
+                        <div class="featurs-content text-center">
+                            <h5>{{ __('app.feature_secure_title') }}</h5>
+                            <p class="mb-0">{{ __('app.feature_secure_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="featurs-item text-center rounded bg-light p-4 h-100">
+                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                            <i class="fas fa-lock fa-3x text-white"></i>
+                        </div>
+                        <div class="featurs-content text-center">
+                            <h5>{{ __('app.feature_reserve_title') }}</h5>
+                            <p class="mb-0">{{ __('app.feature_reserve_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="featurs-item text-center rounded bg-light p-4 h-100">
+                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                            <i class="fas fa-undo-alt fa-3x text-white"></i>
+                        </div>
+                        <div class="featurs-content text-center">
+                            <h5>{{ __('app.feature_refund_title') }}</h5>
+                            <p class="mb-0">{{ __('app.feature_refund_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="featurs-item text-center rounded bg-light p-4 h-100">
+                        <div class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                            <i class="fas fa-gift fa-3x text-white"></i>
+                        </div>
+                        <div class="featurs-content text-center">
+                            <h5>{{ __('app.feature_fast_title') }}</h5>
+                            <p class="mb-0">{{ __('app.feature_fast_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- Trust Features End -->
 
-    @if ($skins->isEmpty())
-        <div class="alert alert-info">{{ __('app.no_skins') }}</div>
-    @else
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
-            @foreach ($skins as $skin)
-                <div class="col">
-                    <div class="card h-100 shadow-sm skin-card">
-                        @if ($skin->imageUrl())
-                            <img src="{{ $skin->imageUrl() }}" class="card-img-top" alt="{{ $skin->name }}">
-                        @else
-                            <div class="card-img-top placeholder-img d-flex align-items-center justify-content-center">
-                                <i class="bi bi-image text-white-50 fs-1"></i>
-                            </div>
-                        @endif
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title mb-1">{{ $skin->name }}</h5>
-                            <p class="text-muted small mb-2">{{ $skin->hero_name }}</p>
-                            <span class="badge text-bg-secondary align-self-start mb-3">{{ $skin->type }}</span>
-                            <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <span class="fw-semibold text-primary">
-                                        <i class="bi bi-gem me-1"></i>{{ number_format($skin->price_diamond, 0, ',', '.') }}
-                                    </span>
-                                    <span class="fw-bold">Rp {{ number_format($skin->price_rupiah, 0, ',', '.') }}</span>
-                                </div>
-                                <a href="{{ route('checkout.create', $skin) }}" class="btn btn-primary w-100">
-                                    {{ __('app.order_now') }}
+    <!-- Skins Catalog Start -->
+    <div class="container-fluid fruite py-5" id="catalog">
+        <div class="container py-5">
+            <div class="tab-class text-center">
+                <div class="row g-4">
+                    <div class="col-lg-4 text-start">
+                        <h1>{{ __('app.available_skins') }}</h1>
+                    </div>
+                    <div class="col-lg-8 text-end">
+                        <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                            <li class="nav-item">
+                                <a class="d-flex m-2 py-2 px-4 bg-light rounded-pill {{ $type === null ? 'active' : '' }}" href="{{ route('home') }}#catalog">
+                                    <span class="text-dark">{{ __('app.all_types') }}</span>
                                 </a>
+                            </li>
+                            @foreach ($types as $skinType)
+                                <li class="nav-item">
+                                    <a class="d-flex m-2 py-2 px-4 bg-light rounded-pill {{ $type === $skinType ? 'active' : '' }}"
+                                       href="{{ route('home', ['type' => $skinType]) }}#catalog">
+                                        <span class="text-dark">{{ $skinType }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    @forelse ($skins as $skin)
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="rounded position-relative fruite-item h-100 d-flex flex-column">
+                                <div class="fruite-img">
+                                    @if ($skin->imageUrl())
+                                        <img src="{{ $skin->imageUrl() }}" class="img-fluid w-100 rounded-top" alt="{{ $skin->name }}">
+                                    @else
+                                        <div class="placeholder-img rounded-top">
+                                            <i class="fas fa-image fa-3x text-white-50"></i>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">{{ $skin->type }}</div>
+                                <div class="p-4 border border-secondary border-top-0 rounded-bottom text-start flex-grow-1 d-flex flex-column">
+                                    <h4>{{ $skin->name }}</h4>
+                                    <p><i class="fas fa-user me-1 text-primary"></i>{{ $skin->hero_name }}</p>
+                                    <div class="mt-auto">
+                                        <p class="diamond-chip fs-5 mb-1"><i class="fas fa-gem me-1"></i>{{ number_format($skin->price_diamond, 0, ',', '.') }} {{ __('app.diamonds') }}</p>
+                                        <div class="d-flex justify-content-between align-items-center flex-lg-wrap gap-2">
+                                            <p class="text-dark fs-5 fw-bold mb-0">Rp {{ number_format($skin->price_rupiah, 0, ',', '.') }}</p>
+                                            <a href="{{ route('checkout.create', $skin) }}" class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                <i class="fa fa-shopping-bag me-2 text-primary"></i>{{ __('app.order_now') }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="alert alert-info">{{ __('app.no_skins') }}</div>
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Skins Catalog End -->
+
+    <!-- Trust Banner Start -->
+    <div class="container-fluid banner bg-secondary my-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <div class="py-4">
+                        <h1 class="display-4 text-white">{{ __('app.banner_title') }}</h1>
+                        <p class="fw-normal fs-4 text-dark mb-4">{{ __('app.banner_subtitle') }}</p>
+                        <ul class="list-unstyled text-dark mb-4">
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-white"></i>{{ __('app.banner_point_1') }}</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-white"></i>{{ __('app.banner_point_2') }}</li>
+                            <li class="mb-2"><i class="fas fa-check-circle me-2 text-white"></i>{{ __('app.banner_point_3') }}</li>
+                        </ul>
+                        <a href="#catalog" class="banner-btn btn border-2 border-white rounded-pill text-dark py-3 px-5">{{ __('app.banner_cta') }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <div class="position-relative d-inline-block">
+                        <div class="d-flex align-items-center justify-content-center bg-dark rounded-circle mx-auto" style="width: 220px; height: 220px;">
+                            <div>
+                                <i class="fas fa-gem fa-4x text-secondary mb-2"></i>
+                                <h4 class="text-white mb-0">{{ number_format($settings->current_diamond_balance, 0, ',', '.') }}</h4>
+                                <small class="text-white-50">{{ __('app.diamonds') }}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
-    @endif
+    </div>
+    <!-- Trust Banner End -->
 @endsection

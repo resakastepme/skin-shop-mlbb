@@ -11,14 +11,39 @@ return [
     'back_to_home' => 'Kembali ke Beranda',
 
     // Beranda / katalog
+    'hero_tagline' => 'Gift Skin MLBB 100% Aman',
     'hero_title' => 'MLBB Skin Gift Shop',
     'hero_subtitle' => 'Pesan skin Mobile Legends favoritmu dan terima sebagai gift in-game dari admin kami.',
+    'hero_cta_catalog' => 'Lihat Katalog',
+    'hero_cta_track' => 'Lacak Order',
+    'admin_diamond_balance' => 'Saldo Diamond Admin',
+    'admin_account' => 'Akun Admin',
+    'gift_requirement_note' => 'Pastikan kamu sudah berteman dengan akun admin minimal 7 hari agar bisa menerima gift.',
     'available_skins' => 'Skin Tersedia',
     'no_skins' => 'Belum ada skin yang tersedia saat ini. Silakan cek kembali nanti.',
     'order_now' => 'Pesan Sekarang',
     'diamonds' => 'Diamond',
     'hero' => 'Hero',
     'type' => 'Tipe',
+    'all_types' => 'Semua Tipe',
+
+    // Fitur kepercayaan
+    'feature_secure_title' => 'Pembayaran Aman',
+    'feature_secure_desc' => 'Bayar via DANA, konfirmasi langsung ke admin lewat WhatsApp.',
+    'feature_reserve_title' => 'Stok Terjamin',
+    'feature_reserve_desc' => 'Diamond langsung direservasi saat kamu checkout — tidak ada oversell.',
+    'feature_refund_title' => 'Refund Otomatis',
+    'feature_refund_desc' => 'Order yang tidak dibayar otomatis dibatalkan setelah 30 menit.',
+    'feature_fast_title' => 'Gift In-Game Cepat',
+    'feature_fast_desc' => 'Skin dikirim sebagai gift in-game segera setelah pembayaran diverifikasi.',
+
+    // Banner kepercayaan
+    'banner_title' => 'Belanja Tanpa Khawatir',
+    'banner_subtitle' => 'Diamond asli, gift asli, tanpa was-was.',
+    'banner_point_1' => 'Stok diamond yang kamu lihat itu nyata — katalog hanya menampilkan skin yang benar-benar bisa di-gift admin saat ini.',
+    'banner_point_2' => 'Order kamu dikunci selama 30 menit, dan setiap transaksi terlacak dengan kode order unik.',
+    'banner_point_3' => 'Akun admin transparan — kamu tahu persis siapa yang mengirim gift kamu.',
+    'banner_cta' => 'Pesan Skin Sekarang',
 
     // Checkout
     'checkout' => 'Checkout',
@@ -133,4 +158,8 @@ return [
     'current_diamond_balance' => 'Saldo Diamond Saat Ini',
     'settings_updated' => 'Pengaturan berhasil diperbarui.',
     'balance_note' => 'Sesuaikan manual hanya setelah top-up diamond. Checkout, pembatalan, dan refund memperbaruinya otomatis.',
+
+    // Footer
+    'all_rights_reserved' => 'Hak cipta dilindungi.',
+    'footer_tagline' => 'Layanan gift skin MLBB — bayar via DANA, terima in-game.',
 ];
